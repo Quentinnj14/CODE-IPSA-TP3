@@ -1,0 +1,86 @@
+from math import exp,log,cos,sin,tan
+
+def Newton( f,fder,x0,epsilon,Nitermax ) : 
+    xold = x0
+    xnew = xold-(f(xold))/(fder(xold))
+    n = 1
+    while abs(xnew-xold)> epsilon and n < Nitermax :
+        xold = xnew
+        xnew = xold-(f(xold))/(fder(xold))
+        n += 1
+    return xnew , n 
+
+
+def f_1(x):
+    return x**4+3*x-9 
+def fder_1(x):
+    return 4*x**3+3
+print('fonction 1 :' ,Newton(f_1,fder_1, 1.3, 1e-10, 5e4))
+print('fonction 1 :',Newton(f_1,fder_1, -2, 1e-10, 5e4))
+
+
+def f_2(x):
+    return x-3*cos(x)+2
+def fder_2(x):
+    return 1+3*sin(x)
+print('fonction 2 :' ,Newton(f_2,fder_2, 0, 1e-10, 5e4))
+print('fonction 2 :',Newton(f_2,fder_2, -1, 1e-10, 5e4))
+print('fonction 2 :',Newton(f_2,fder_2, -4, 1e-10, 5e4))
+
+
+def f_3(x):
+    return x*exp(x)-7
+def fder_3(x):
+    return (x+1)*exp(x)
+print('fonction 3 :' ,Newton(f_3,fder_3, 1.5, 1e-10, 5e4))
+
+
+def f_4(x):
+    return exp(x)-x-10
+def fder_4(x):
+    return exp(x)-1
+print('fonction 4 :' ,Newton(f_4,fder_4, -10, 1e-10, 5e4))
+print('fonction 4 :',Newton(f_4,fder_4,2.5, 1e-10, 5e4))
+
+
+def f_5(x):
+    return 2*tan(x)-5-x
+def fder_5(x):
+    return 2/(cos(x)**2)-1
+print('fonction 5 :' ,Newton(f_5,fder_5, 1.2, 1e-10, 5e4))
+
+
+def f_6(x):
+    return exp(x)-x**2-3
+def fder_6(x):
+    return exp(x)-2*x
+print('fonction 6 :' ,Newton(f_6,fder_6, 0, 1e-10, 5e4))
+
+
+def f_7(x):
+    return 3*x+4*log(x)-7
+def fder_7(x):
+    return 3+4/x
+print('fonction 7 :' ,Newton(f_7,fder_7, 1, 1e-10, 5e4))
+
+
+def f_8(x):
+    return x**4-2*x**2+4*x-17
+def fder_8(x):
+    return 4*x**3-4*x+4
+print("fonction 8:",Newton(f_8,fder_8,2,1e-10, 5e4))
+print("fonction 8:",Newton(f_8,fder_8,-3,1e-10, 5e4))
+
+
+def f_9(x):
+    return exp(x)-2*sin(x)-7
+def fder_9(x):
+    return exp(x)-2*cos(x)
+print("fonction 9:",Newton(f_9,fder_9,2,1e-10, 5e4))
+
+
+def f_10(x):
+    return log(x**2+4)*exp(x)-10
+def fder_10(x):
+    return (2*x/(x**2+4))*exp(x)+log(x**2+4)*exp(x)
+print("fonction 10:",Newton(f_10,fder_10,1,1e-10, 5e4))
